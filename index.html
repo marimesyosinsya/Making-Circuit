@@ -3,16 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Racing Circuit</title>
-    <link rel="stylesheet" href="stylesheet.css">
+    <title>Random Circuit Generator</title>
+    <style>
+        #circuit {
+            width: 800px;
+            height: 600px;
+            border: 2px solid black;
+            position: relative;
+        }
+        .element {
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
-    <div class="track">
-        <!-- コースのライン -->
-        <div class="track-line" id="line1"></div>
-        <div class="track-line" id="line2"></div>
-        <div class="track-line" id="line3"></div>
-    </div>
-    <script src="script.js"></script>
+    <button onclick="generateCircuit()">Generate Circuit</button>
+    <div id="circuit"></div>
+    <script>
+        function generateCircuit() {
+            const circuit = document.getElementById("circuit");
+            circuit.innerHTML = ""; // 既存の要素をクリア
+
+            for (let i = 0; i < 10; i++) {
+                const element = document.createElement("div");
+                element.className = "element";
+                element.style.width = `${Math.random() * 100}px`;
+                element.style.height = `${Math.random() * 100}px`;
+                element.style.backgroundColor = randomColor();
+                element.style.top = `${Math.random() * 500}px`;
+                element.style.left = `${Math.random() * 700}px`;
+                circuit.appendChild(element);
+            }
+        }
+
+        function randomColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r},${g},${b})`;
+        }
+    </script>
 </body>
 </html>
