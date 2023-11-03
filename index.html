@@ -24,23 +24,18 @@
             const circuit = document.getElementById("circuit");
             circuit.innerHTML = ""; // 既存の要素をクリア
 
-            for (let i = 0; i < 10; i++) {
+            const numElements = Math.floor(Math.random() * 20) + 5; // 5から25個のランダムな要素を生成
+
+            for (let i = 0; i < numElements; i++) {
                 const element = document.createElement("div");
                 element.className = "element";
                 element.style.width = `${Math.random() * 100}px`;
                 element.style.height = `${Math.random() * 100}px`;
-                element.style.backgroundColor = randomColor();
-                element.style.top = `${Math.random() * 500}px`;
-                element.style.left = `${Math.random() * 700}px`;
+                element.style.backgroundColor = "transparent"; // 色を変えない
+                element.style.top = `${Math.random() * 300}px`; // 0から300pxの範囲でランダムな位置
+                element.style.left = `${Math.random() * 300}px`; // 0から300pxの範囲でランダムな位置
                 circuit.appendChild(element);
             }
-        }
-
-        function randomColor() {
-            const r = Math.floor(Math.random() * 256);
-            const g = Math.floor(Math.random() * 256);
-            const b = Math.floor(Math.random() * 256);
-            return `rgb(${r},${g},${b})`;
         }
     </script>
 </body>
